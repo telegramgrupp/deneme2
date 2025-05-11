@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-gray-900 antialiased min-h-screen;
+    @apply bg-gradient-to-br from-[#6B00F5] via-[#A100F5] to-[#FF007A] text-white antialiased min-h-screen;
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
   }
@@ -16,31 +16,31 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-xl font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transform hover:scale-105;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 focus:outline-none disabled:opacity-60 disabled:cursor-not-allowed transform hover:scale-105;
   }
 
   .btn-primary {
-    @apply btn bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 focus:ring-indigo-500 shadow-xl hover:shadow-2xl;
+    @apply btn bg-gradient-to-r from-[#FF007A] to-[#FF5E00] text-white shadow-xl hover:shadow-2xl;
   }
 
   .btn-secondary {
-    @apply btn bg-gradient-to-r from-pink-500 to-rose-500 text-white hover:from-pink-600 hover:to-rose-600 focus:ring-pink-500 shadow-xl hover:shadow-2xl;
+    @apply btn bg-gradient-to-r from-[#6B00F5] to-[#A100F5] text-white shadow-xl hover:shadow-2xl;
   }
 
   .btn-outline {
-    @apply btn border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white/10 focus:ring-white;
+    @apply btn border-2 border-white/30 backdrop-blur-sm text-white hover:bg-white/10;
   }
 
   .card {
-    @apply bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl p-6 transition-all duration-300 hover:shadow-3xl border border-white/20;
+    @apply bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl p-8 transition-all duration-300 hover:shadow-3xl border border-white/20;
   }
 
   .input {
-    @apply w-full px-4 py-2 rounded-xl border border-white/30 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-300 bg-white/10 backdrop-blur-sm text-white placeholder-white/70;
+    @apply w-full px-6 py-3 rounded-full border border-white/30 focus:outline-none focus:ring-2 focus:ring-[#FF007A] focus:border-transparent transition-all duration-300 bg-white/10 backdrop-blur-sm text-white placeholder-white/70;
   }
 
   .glass-card {
-    @apply bg-white/10 backdrop-blur-xl rounded-2xl border border-white/20 shadow-2xl;
+    @apply bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl;
   }
 
   .nav-link {
@@ -70,7 +70,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full;
+  @apply bg-gradient-to-b from-[#6B00F5] to-[#A100F5] rounded-full;
 }
 
 ::-webkit-scrollbar-thumb {
