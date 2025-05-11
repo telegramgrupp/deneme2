@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, Outlet } from 'react-router-dom';
 import { Video, CreditCard, User, Shield } from 'lucide-react';
 import { useAuthStore } from '../stores/authStore';
 import { useCoinStore } from '../stores/coinStore';
