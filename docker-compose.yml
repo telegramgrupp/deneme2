@@ -34,13 +34,13 @@ services:
       - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/videochat
       - JWT_SECRET=your_jwt_secret
       - PORT=4000
-      - NODE_ENV=production
+      - NODE_ENV=development
       - STRIPE_SECRET_KEY=your_stripe_secret_key
       - IYZICO_API_KEY=your_iyzico_api_key
       - IYZICO_SECRET_KEY=your_iyzico_secret_key
       - ADMIN_USERNAME=admin
       - ADMIN_PASSWORD=securepassword
-      - CLIENT_URL=http://localhost:3000
+      - CLIENT_URL=http://localhost:5173
     volumes:
       - ./server:/app
       - /app/node_modules
@@ -52,12 +52,13 @@ services:
     container_name: videochat-client
     restart: always
     ports:
-      - "3000:3000"
+      - "5173:5173"
     depends_on:
       - server
     environment:
       - VITE_API_URL=http://localhost:4000
       - VITE_SOCKET_URL=http://localhost:4000
+      - VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
     volumes:
       - ./client:/app
       - /app/node_modules
