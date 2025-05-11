@@ -13,9 +13,9 @@ COPY . .
 
 RUN npx prisma generate
 
-EXPOSE 4001
+EXPOSE 4002
 
 ENV NODE_ENV=development
-ENV PORT=4001
+ENV PORT=4002
 
 CMD ["npm", "run", "dev"]
