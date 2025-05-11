@@ -8,34 +8,35 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-purple-50 via-white to-blue-50 text-gray-900 antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply bg-gradient-to-br from-indigo-50 via-pink-50 to-purple-50 text-gray-900 antialiased;
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed;
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed transform hover:scale-105;
   }
 
   .btn-primary {
-    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500;
+    @apply btn bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 focus:ring-primary-500 shadow-lg hover:shadow-glow;
   }
 
   .btn-secondary {
-    @apply btn bg-secondary-600 text-white hover:bg-secondary-700 focus:ring-secondary-500;
+    @apply btn bg-gradient-to-r from-secondary-500 to-secondary-600 text-white hover:from-secondary-600 hover:to-secondary-700 focus:ring-secondary-500 shadow-lg hover:shadow-glow-pink;
   }
 
   .btn-outline {
-    @apply btn border-2 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500;
+    @apply btn border-2 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500 hover:border-primary-500 hover:text-primary-600;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-200 hover:shadow-glow;
+    @apply bg-white/80 backdrop-blur-lg rounded-xl shadow-lg p-6 transition-all duration-200 hover:shadow-glow border border-white/20;
   }
 
   .input {
-    @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+    @apply w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm;
   }
 
   .badge {
@@ -43,47 +44,44 @@
   }
 
   .badge-success {
-    @apply badge bg-green-100 text-green-800;
+    @apply badge bg-gradient-to-r from-green-100 to-emerald-100 text-emerald-800;
   }
 
   .badge-warning {
-    @apply badge bg-amber-100 text-amber-800;
+    @apply badge bg-gradient-to-r from-amber-100 to-orange-100 text-amber-800;
   }
 
   .badge-error {
-    @apply badge bg-red-100 text-red-800;
+    @apply badge bg-gradient-to-r from-red-100 to-rose-100 text-rose-800;
   }
 
   .nav-link {
-    @apply text-sm font-medium transition-colors duration-200;
+    @apply text-sm font-medium transition-all duration-200;
   }
 
   .nav-link-active {
-    @apply text-primary-600;
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-secondary-600;
   }
 
   .nav-link-inactive {
     @apply text-gray-700 hover:text-primary-600;
   }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-lg border border-white/20;
+  }
 }
 
-/* Custom Animations */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
   50% {
-    transform: translateY(-10px);
+    background-position: 100% 50%;
   }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Glass Effect */
-.glass {
-  @apply bg-white bg-opacity-70 backdrop-blur-lg;
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* Custom Scrollbar */
@@ -92,9 +90,9 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 rounded-full;
+  @apply bg-gradient-to-b from-indigo-50 to-purple-50 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+  @apply bg-gradient-to-b from-primary-400 to-secondary-400 rounded-full hover:from-primary-500 hover:to-secondary-500;
 }
