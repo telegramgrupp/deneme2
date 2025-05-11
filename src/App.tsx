@@ -5,15 +5,15 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useAuthStore } from './stores/authStore';
 import AdminProtectedRoute from './components/auth/AdminProtectedRoute';
 import Layout from './components/Layout';
-import HomePage from './components/pages/HomePage';
-import VideoMatchPage from './components/pages/VideoMatchPage';
-import ProfilePage from './components/pages/ProfilePage';
-import AdminLoginPage from './components/pages/AdminLoginPage';
-import AdminDashboard from './components/pages/admin/AdminDashboard';
-import AdminUsers from './components/pages/admin/AdminUsers';
-import AdminMatches from './components/pages/admin/AdminMatches';
-import AdminTransactions from './components/pages/admin/AdminTransactions';
-import PurchaseCoinsPage from './components/pages/PurchaseCoinsPage';
+import HomePage from '../client/src/components/pages/HomePage';
+import VideoMatchPage from '../client/src/components/pages/VideoMatchPage';
+import ProfilePage from '../client/src/components/pages/ProfilePage';
+import AdminLoginPage from '../client/src/components/pages/AdminLoginPage';
+import AdminDashboard from '../client/src/components/pages/admin/AdminDashboard';
+import AdminUsers from '../client/src/components/pages/admin/AdminUsers';
+import AdminMatches from '../client/src/components/pages/admin/AdminMatches';
+import AdminTransactions from '../client/src/components/pages/admin/AdminTransactions';
+import PurchaseCoinsPage from '../client/src/components/pages/PurchaseCoinsPage';
 
 // Initialize Stripe
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
