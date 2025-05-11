@@ -3,6 +3,7 @@ import { CreditCard, Clock, User } from 'lucide-react';
 import { format } from 'date-fns';
 import { useCoinStore } from '../../stores/coinStore';
 import { Link } from 'react-router-dom';
+import { socket } from '../../utils/socket';
 
 const ProfilePage = () => {
   const { balance, transactions, fetchBalance, fetchTransactions } = useCoinStore();
