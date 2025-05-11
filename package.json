@@ -1,0 +1,21 @@
+{
+  "name": "video-chat-application",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "build:client": "cd client && npm run build",
+    "build:server": "cd server && npm run build",
+    "build": "npm run build:client && npm run build:server",
+    "start": "cd server && npm run start",
+    "setup": "npm i && concurrently \"cd client && npm i\" \"cd server && npm i\"",
+    "prisma:generate": "cd server && npx prisma generate",
+    "prisma:migrate": "cd server && npx prisma migrate dev"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

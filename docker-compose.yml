@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: videochat-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: videochat
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: videochat-server
+    restart: always
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/videochat
+      - JWT_SECRET=your_jwt_secret
+      - PORT=4000
+      - NODE_ENV=production
+      - STRIPE_SECRET_KEY=your_stripe_secret_key
+      - IYZICO_API_KEY=your_iyzico_api_key
+      - IYZICO_SECRET_KEY=your_iyzico_secret_key
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=securepassword
+      - CLIENT_URL=http://localhost:3000
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: videochat-client
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+    environment:
+      - VITE_API_URL=http://localhost:4000
+      - VITE_SOCKET_URL=http://localhost:4000
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+
+volumes:
+  postgres-data:

@@ -1,0 +1,88 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  socketId  String?   @unique
+  createdAt DateTime  @default(now())
+  lastSeen  DateTime  @default(now())
+  isBanned  Boolean   @default(false)
+  
+  // Relationships
+  coins       Coin?
+  matches     Match[]         @relation("UserMatches")
+  matchedWith Match[]         @relation("MatchedWithUser")
+  transactions Transaction[]
+}
+
+model Match {
+  id          String    @id @default(uuid())
+  userId      String
+  matchedWith String
+  isFake      Boolean   @default(false)
+  startTime   DateTime  @default(now())
+  endTime     DateTime?
+  duration    Int?      // in seconds
+  videoPath   String?
+  
+  // Relationships
+  user         User      @relation("UserMatches", fields: [userId], references: [id])
+  matchedUser  User      @relation("MatchedWithUser", fields: [matchedWith], references: [id])
+}
+
+model Coin {
+  userId  String   @id
+  balance Int      @default(0)
+  
+  // Relationships
+  user  User  @relation(fields: [userId], references: [id])
+}
+
+model Transaction {
+  id          String    @id @default(uuid())
+  userId      String
+  amount      Int
+  type        TransactionType
+  provider    PaymentProvider
+  status      TransactionStatus @default(completed)
+  createdAt   DateTime  @default(now())
+  description String
+  
+  // Relationships
+  user  User  @relation(fields: [userId], references: [id])
+}
+
+model FakeVideo {
+  id        String    @id @default(uuid())
+  path      String
+  duration  Int       // in seconds
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+}
+
+enum TransactionType {
+  purchase
+  usage
+}
+
+enum PaymentProvider {
+  stripe
+  iyzico
+  admin
+  system
+}
+
+enum TransactionStatus {
+  pending
+  completed
+  failed
+}
