@@ -2,6 +2,9 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Install OpenSSL and other required dependencies
+RUN apk add --no-cache openssl libc6-compat
+
 COPY package*.json ./
 
 RUN npm install
