@@ -32,7 +32,7 @@ const server = http.createServer(app);
 // Initialize Socket.IO
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:3000',
+    origin: process.env.CLIENT_URL || 'http://localhost:5173',
     methods: ['GET', 'POST'],
     credentials: true
   }
@@ -46,7 +46,7 @@ const peerServer = ExpressPeerServer(server, {
 
 // Set up middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: process.env.CLIENT_URL || 'http://localhost:5173',
   credentials: true
 }));
 app.use(helmet());
@@ -80,7 +80,7 @@ app.use(errorHandler);
 setupSocketHandlers(io);
 
 // Start the server
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4002;
 server.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`);
 });
