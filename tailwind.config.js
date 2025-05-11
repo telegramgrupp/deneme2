@@ -16,7 +16,6 @@ export default {
           700: '#4338CA',
           800: '#3730A3',
           900: '#312E81',
-          950: '#1E1B4B',
         },
         secondary: {
           DEFAULT: '#EC4899',
@@ -30,47 +29,25 @@ export default {
           700: '#9D174D',
           800: '#831843',
           900: '#500724',
-          950: '#3B0764',
-        },
-        accent: {
-          DEFAULT: '#8B5CF6',
-          50: '#F5F3FF',
-          100: '#EDE9FE',
-          200: '#DDD6FE',
-          300: '#C4B5FD',
-          400: '#A78BFA',
-          500: '#8B5CF6',
-          600: '#7C3AED',
-          700: '#6D28D9',
-          800: '#5B21B6',
-          900: '#4C1D95',
-          950: '#2E1065',
         }
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      boxShadow: {
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'gradient': 'gradient 8s linear infinite',
+        'gradient': 'gradient 15s ease infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(-20px)' },
         },
         gradient: {
           '0%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         }
-      },
-      boxShadow: {
-        'glow': '0 0 20px -5px rgba(99, 102, 241, 0.3), 0 0 10px -2px rgba(99, 102, 241, 0.2)',
-        'glow-pink': '0 0 20px -5px rgba(236, 72, 153, 0.3), 0 0 10px -2px rgba(236, 72, 153, 0.2)',
-        'glow-purple': '0 0 20px -5px rgba(139, 92, 246, 0.3), 0 0 10px -2px rgba(139, 92, 246, 0.2)',
       }
     },
   },
