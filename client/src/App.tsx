@@ -16,7 +16,7 @@ import AdminTransactions from './components/pages/admin/AdminTransactions';
 import PurchaseCoinsPage from './components/pages/PurchaseCoinsPage';
 
 // Initialize Stripe
-const stripePromise = loadStripe('pk_test_stripe_publishable_key');
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
 
 function App() {
   const { checkAuth } = useAuthStore();
